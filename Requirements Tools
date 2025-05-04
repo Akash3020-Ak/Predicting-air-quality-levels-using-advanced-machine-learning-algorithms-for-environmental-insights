@@ -1,0 +1,15 @@
+# Core libraries
+numpy
+pandas
+scikit-learn
+joblib
+
+# Data visualization
+matplotlib
+seaborn
+plotly
+
+# Machine learning and optimization
+xgboost
+lightgbm
+catboost
