@@ -1,0 +1,26 @@
+# app.py
+import streamlit as st
+import numpy as np
+import pickle
+
+# Load model
+with open('models/aqi_model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+# Streamlit UI
+st.set_page_config(page_title="Air Quality Prediction", layout="centered")
+st.title("🌍 Air Quality Prediction App")
+st.markdown("Predict AQI using PM2.5, PM10, NO2, and city code")
+
+# Inputs
+pm25 = st.slider("PM2.5", 0.0, 500.0, 50.0)
+pm10 = st.slider("PM10", 0.0, 600.0, 100.0)
+no2 = st.slider("NO2", 0.0, 200.0, 30.0)
+city = st.selectbox("City", options=["Delhi", "Mumbai", "Bangalore", "Kolkata", "Chennai"])
+city_code = {"Delhi": 0, "Mumbai": 1, "Bangalore": 2, "Kolkata": 3, "Chennai": 4}[city]
+
+# Prediction
+if st.button("Predict AQI"):
+    features = np.array([[pm25, pm10, no2, city_code]])
+    prediction = model.predict(features)
+    st.success(f"Predicted AQI: {prediction[0]:.2f}")

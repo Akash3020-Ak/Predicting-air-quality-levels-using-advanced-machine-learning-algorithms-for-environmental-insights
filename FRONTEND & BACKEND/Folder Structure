@@ -1,0 +1,9 @@
+Air-Quality-Prediction/
+├── app.py                     # Frontend
+├── train_model.py             # Backend model trainer
+├── models/
+│   └── aqi_model.pkl          # Saved model
+├── data/
+│   └── air_quality.csv        # Your dataset
+├── requirements.txt
+└── .gitignore
