@@ -1,0 +1,19 @@
+Air-Quality-Prediction/
+├── data/
+│   └── air_quality.csv              # Your dataset
+├── notebooks/
+│   └── EDA.ipynb                    # Jupyter notebook for exploration
+├── models/
+│   └── model.pkl                    # Saved model (XGBoost or best model)
+├── src/
+│   ├── preprocessing.py             # Data cleaning & transformation code
+│   ├── train_model.py               # Model training script
+│   ├── evaluate_model.py           # Model evaluation script
+├── deployment/
+│   └── app.py                       # Streamlit or Flask app
+├── images/
+│   └── flowchart.png                # Project flowchart
+├── .gitignore
+├── requirements.txt                # Python dependencies
+├── README.md                       # Project overview
+└── Phase-3-for-DS.pdf              # Filled project report (if needed)

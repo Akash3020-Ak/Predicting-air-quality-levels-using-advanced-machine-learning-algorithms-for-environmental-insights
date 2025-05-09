@@ -1,0 +1,15 @@
+PM2.5: 35.0
+
+PM10: 78.0
+
+NO2: 20.5
+
+City: 1
+
+Predicted AQI: 110.2
+
+📌 Future Scope
+
+Integrate real-time data from government APIs
+
+Add LSTM for time-series forecasting
