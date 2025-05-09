@@ -1,0 +1,19 @@
+# app.py
+import streamlit as st
+import numpy as np
+import pickle
+
+# Load trained model
+model = pickle.load(open('model.pkl', 'rb'))
+
+st.title("Air Quality Prediction")
+
+pm25 = st.number_input("PM2.5")
+pm10 = st.number_input("PM10")
+no2 = st.number_input("NO2")
+city = st.number_input("City Code (e.g., 0, 1, 2...)")
+
+features = np.array([[pm25, pm10, no2, city]])
+prediction = model.predict(features)
+
+st.subheader(f"Predicted AQI: {prediction[0]:.2f}")

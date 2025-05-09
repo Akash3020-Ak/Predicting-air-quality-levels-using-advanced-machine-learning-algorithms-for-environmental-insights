@@ -1,0 +1,18 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.impute import SimpleImputer
+
+# Load dataset
+df = pd.read_csv("air_quality.csv")
+
+# Handle missing values
+imputer = SimpleImputer(strategy='mean')
+df[['PM2.5', 'PM10', 'NO2']] = imputer.fit_transform(df[['PM2.5', 'PM10', 'NO2']])
+
+# Encode categorical variables
+le = LabelEncoder()
+df['City'] = le.fit_transform(df['City'])
+
+# Feature scaling
+scaler = StandardScaler()
+df[['PM2.5', 'PM10', 'NO2']] = scaler.fit_transform(df[['PM2.5', 'PM10', 'NO2']])

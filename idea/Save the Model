@@ -1,0 +1,5 @@
+import pickle
+
+# Save best model
+with open("model.pkl", "wb") as f:
+    pickle.dump(xgb, f)
