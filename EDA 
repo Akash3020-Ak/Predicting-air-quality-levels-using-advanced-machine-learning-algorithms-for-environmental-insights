@@ -1,0 +1,40 @@
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+df = pd.read_csv('air_quality_data.csv')  # Replace with your actual file
+
+# Basic info
+print(df.info())
+print(df.describe())
+
+# Handle missing values
+df = df.dropna()  # Or use imputation
+
+# 1. Histogram - Distribution of pollutants
+pollutants = ['PM2.5', 'PM10', 'NO2', 'SO2', 'AQI']
+for col in pollutants:
+    plt.figure(figsize=(6, 4))
+    sns.histplot(df[col], kde=True, bins=30)
+    plt.title(f'Distribution of {col}')
+    plt.xlabel(col)
+    plt.ylabel('Frequency')
+    plt.tight_layout()
+    plt.show()
+
+# 2. Correlation heatmap
+plt.figure(figsize=(8, 6))
+corr = df[pollutants].corr()
+sns.heatmap(corr, annot=True, cmap='coolwarm')
+plt.title('Correlation between pollutants and AQI')
+plt.tight_layout()
+plt.show()
+
+# 3. Boxplot - Outlier detection
+plt.figure(figsize=(10, 5))
+sns.boxplot(data=df[pollutants])
+plt.title('Boxplot of pollutants')
+plt.tight_layout()
+plt.show()
