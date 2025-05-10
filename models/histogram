@@ -1,0 +1,4 @@
+import matplotlib.pyplot as plt
+df[['PM2.5', 'PM10', 'NO2', 'AQI']].hist(bins=10, figsize=(10, 6))
+plt.suptitle('Distribution of Air Quality Features')
+plt.show()
