@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+# Sample data simulating air quality readings
+data = {
+    'City': ['Delhi', 'Mumbai', 'Delhi', 'Kolkata', 'Chennai'],
+    'PM2.5': [250.1, 180.3, np.nan, 160.2, 110.5],
+    'PM10': [300.5, 200.1, 180.0, 210.3, 190.5],
+    'NO2': [60.0, 45.5, 50.3, np.nan, 39.8],
+    'AQI': [400, 320, 350, 310, 280]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display original data
+print("Original Data:")
+print(df.head())
+
+# 1. Handle missing values (mean imputation)
+df['PM2.5'].fillna(df['PM2.5'].mean(), inplace=True)
+df['NO2'].fillna(df['NO2'].mean(), inplace=True)
+
+# 2. Encode categorical column 'City'
+df = pd.get_dummies(df, columns=['City'], drop_first=True)
+
+# 3. Standardize numerical features
+scaler = StandardScaler()
+num_cols = ['PM2.5', 'PM10', 'NO2']
+df[num_cols] = scaler.fit_transform(df[num_cols])
+
+# Display preprocessed data
+print("\nPreprocessed Data:")
+print(df.head())
