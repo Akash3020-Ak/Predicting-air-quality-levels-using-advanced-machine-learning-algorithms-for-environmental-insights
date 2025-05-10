@@ -1,0 +1,16 @@
+##Original Data:
+     City  PM2.5   PM10   NO2  AQI
+0   Delhi  250.1  300.5  60.0  400
+1  Mumbai  180.3  200.1  45.5  320
+2   Delhi    NaN  180.0  50.3  350
+3 Kolkata  160.2  210.3   NaN  310
+4 Chennai  110.5  190.5  39.8  280
+
+
+##Preprocessed Data:
+     PM2.5     PM10      NO2  AQI  City_Delhi  City_Kolkata  City_Mumbai
+0  1.4107  1.8638  1.4474  400             1              0            0
+1  0.3194 -0.6750  0.0617  320             0              0            1
+2  0.7644 -1.1744  0.4030  350             1              0            0
+3  0.0215 -0.3571  0.4030  310             0              1            0
+4 -2.5159 -0.3427 -1.9151  280             0              0            0
